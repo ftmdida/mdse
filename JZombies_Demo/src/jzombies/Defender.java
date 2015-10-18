@@ -54,40 +54,43 @@ public class Defender extends Agent{
 
 	@Override
 	public void receive(Request request) {
-		List<SecurityPolicy> securityPolicies= listOfSecurityPolicy.getSecurityPolicy();
-		for (SecurityPolicy securityPolicy : securityPolicies) {
-			for (Behavior behavior : securityPolicy.getBehavior()) {
-				for (Conditions condition : behavior.getCondition()) {
-					if(!condition.checkProtocol(request.getProtocol())){
-						for (Agent agent : connections) {							
-							if(agent.getSourceIP() == request.getSourceIP()){
-														
-								Object obj=agent;
-								Context<Object> context = ContextUtils.getContext(obj);
-								
-								Network<Object> net = (Network<Object>)context.getProjection("infection network");						
-								net.addEdge(this, agent);
-
-							}
-							
-						
-						}
-					}
-					else{
-						if(condition.checkHttpRequestBody(request.getData())){
-							
-							
-
-							
-						}
-						else {
-							
-						}
-					}
-				
-				}
-			}
-		}
+		
+		
+		
+//		List<SecurityPolicy> securityPolicies= listOfSecurityPolicy.getSecurityPolicy();
+//		for (SecurityPolicy securityPolicy : securityPolicies) {
+//			for (Behavior behavior : securityPolicy.getBehavior()) {
+//				for (Conditions condition : behavior.getCondition()) {
+//					if(!condition.checkProtocol(request.getProtocol())){
+//						for (Agent agent : connections) {							
+//							if(agent.getSourceIP() == request.getSourceIP()){
+//														
+////								Object obj=agent;
+////								Context<Object> context = ContextUtils.getContext(obj);
+////								
+////								Network<Object> net = (Network<Object>)context.getProjection("infection network");						
+////								net.addEdge(this, agent);
+//
+//							}
+//							
+//						
+//						}
+//					}
+//					else{
+//						if(condition.checkHttpRequestBody(request.getData())){
+//							
+//							
+//
+//							
+//						}
+//						else {
+//							
+//						}
+//					}
+//				
+//				}
+//			}
+//		}
 		
 		
 	}
