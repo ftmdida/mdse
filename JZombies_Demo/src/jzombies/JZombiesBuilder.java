@@ -55,14 +55,15 @@ public class JZombiesBuilder implements ContextBuilder<Object> {
 		
 		Parameters params = RunEnvironment.getInstance().getParameters();
 		
-		Defender defender = new Defender(space, grid);
+		Defender defender = new Defender(space, grid,"192.162.0.12");
 		context.add(defender);
 		
 		
 		int zombieCount = (Integer) params.getValue("zombie_count");
 		Attacker tempAttacker; 
+	
 		for (int i = 0; i < zombieCount; i++) {
-			tempAttacker = new Attacker(space, grid);
+			tempAttacker = new Attacker(space, grid, "192.165.0."+(i+1));
 			net.addEdge(tempAttacker,defender);
 			tempAttacker.connect(defender);
 			context.add(tempAttacker);
@@ -71,7 +72,7 @@ public class JZombiesBuilder implements ContextBuilder<Object> {
 		int humanCount = (Integer) params.getValue("human_count");
 		User tempUser;
 		for (int i = 0; i < humanCount; i++) {
-			tempUser = new User(space, grid);
+			tempUser = new User(space, grid,"192.168.0."+(i+1));
 			net.addEdge(tempUser, defender);
 			tempUser.connect(defender);
 			context.add(tempUser);
