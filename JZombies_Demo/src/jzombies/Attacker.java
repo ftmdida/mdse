@@ -18,7 +18,8 @@ public class Attacker extends Agent {
 
 	Defender defender;
 
-	public Attacker(ContinuousSpace<Object> space, Grid<Object> grid) {
+	public Attacker(ContinuousSpace<Object> space, Grid<Object> grid, String sourceIP ) {
+		super(sourceIP);
 		this.space = space;
 		this.grid = grid;
 
@@ -32,7 +33,7 @@ public class Attacker extends Agent {
 	 * @method step here you can check your variables for statistics.
 	 * 
 	 */
-	@ScheduledMethod(start = 1, interval = 1)
+	@ScheduledMethod(start = 1, interval = 50)
 	public void step() throws IOException {
 
 	
@@ -58,8 +59,6 @@ public class Attacker extends Agent {
 			
 				send(new Request(source, destination, i, body, Protocol.HTTP));
 			}
-			
-	
 		
 		}
 		catch (Exception e) {

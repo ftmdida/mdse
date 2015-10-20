@@ -2,15 +2,15 @@ package jzombies;
 
 public enum Protocol {
 	
-	HTTP("http"), HTTPS("https"), FTP("ftp") , SSH("ssh");
+	HTTP(80), HTTPS(443), FTP(21) , SSH(22);
 	
-	private String protocol;
+	private int protocol;
 
-	private Protocol(String s) {
+	private Protocol(int s) {
 		protocol = s;
 	}
 
-	public String getStatusCode() {
+	public int getStatusCode() {
 		return protocol;
 	}
 }
